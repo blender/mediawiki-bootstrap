@@ -1,0 +1,39 @@
+{
+	"name": "Bootstrap",
+	"author": "Francesco Siddi",
+	"url": "https://www.mediawiki.org/wiki/Skin:Bootstrap",
+	"descriptionmsg": "foobar-desc",
+	"namemsg": "bootstrap",
+	"license-name": "GPL-2.0+",
+	"type": "skin",
+	"ValidSkinNames": {
+		"bootstrap": "Bootstrap"
+	},
+	"AutoloadClasses": {
+		"SkinBootstrap": "Bootstrap.skin.php",
+		"BootstrapTemplate": "BootstrapTemplate.php"
+	},
+	"MessagesDirs": {
+		"Bootstrap": "i18n"
+	},
+	"ResourceModules": {
+		"skins.bootstrap": {
+				"styles": {
+						"resources/vendor/bootstrap.min.css": { "media": "screen" },
+						"resources/screen.css": { "media": "screen" },
+						"resources/print.css": { "media": "print" }
+				}
+		},
+		"skins.bootstrap.js": {
+			"scripts": [
+				"resources/vendor/bootstrap.bundle.min.js"
+			],
+			"position": "top",
+			"dependencies": "jquery.ui.dialog"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Bootstrap"
+	}
+}
