@@ -22,13 +22,8 @@ class BootstrapTemplate extends BaseTemplate {
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-			<!-- 		<li class="nav-item active">
-						<a class="nav-link" href="#">Home s<span class="sr-only">(current)</span></a>
-					</li> -->
-
 					<?php echo $this->getPageLinks(); ?>
 					<?php echo $this->getUserLinks(); ?>
-
 				</ul>
 				<div class="navbar-nav">
 					<?php echo $this->getSearch(); ?>
@@ -431,50 +426,12 @@ class BootstrapTemplate extends BaseTemplate {
 		return $html;
 	}
 	/**
-	 * Generates page-related tools/links
-	 * @return string html
-	 */
-	private function getPageLinkLegacy() {
-		$html = $this->getPortlet( array(
-			'id' => 'p-namespaces',
-			'headerMessage' => 'namespaces',
-			'content' => $this->data['content_navigation']['namespaces'],
-		) );
-		$html .= $this->getPortlet( array(
-			'id' => 'p-variants',
-			'headerMessage' => 'variants',
-			'content' => $this->data['content_navigation']['variants'],
-		) );
-		$html .= $this->getPortlet( array(
-			'id' => 'p-views',
-			'headerMessage' => 'views',
-			'content' => $this->data['content_navigation']['views'],
-		) );
-		$html .= $this->getPortlet( array(
-			'id' => 'p-actions',
-			'headerMessage' => 'actions',
-			'content' => $this->data['content_navigation']['actions'],
-		) );
-		return $html;
-	}
-	/**
 	 * Generates user tools menu
 	 * @return string html
 	 */
 	private function getUserLinks() {
 		return $this->getNavDropDown( array(
 			'id' => 'p-personal',
-			'headerMessage' => 'personaltools',
-			'content' => $this->getPersonalTools(),
-		) );
-	}
-	/**
-	 * Generates user tools menu
-	 * @return string html
-	 */
-	private function getUserLinksLegacy() {
-		return $this->getPortlet( array(
-			'id' => 'p-personal-legacy',
 			'headerMessage' => 'personaltools',
 			'content' => $this->getPersonalTools(),
 		) );
