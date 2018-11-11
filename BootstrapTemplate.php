@@ -22,21 +22,25 @@ class BootstrapTemplate extends BaseTemplate {
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<?php echo $this->getPageLinks(); ?>
-					<?php echo $this->getUserLinks(); ?>
+					<?php
+					echo $this->getPageLinks();
+
+					echo $this->getSiteLinks();
+					echo $this->getSiteToolbox();
+					?>
 				</ul>
 				<div class="navbar-nav">
 					<?php echo $this->getSearch(); ?>
 					<?php if ( $this->data['loggedin'] ) { ?>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Links</a>
+						<?php echo $this->getUserLinks(); ?>
 					</li>
 					<?php }?>
 				</div>
 			</div>
 		</nav>
 		<div id="mw-wrapper" class="container-fluid">
-			<div class="row">
+			<div class="row flex-xl-nowrap">
 				<div class="col-9" role="main">
 					<?php
 					if ( $this->data['sitenotice'] ) {
@@ -54,19 +58,19 @@ class BootstrapTemplate extends BaseTemplate {
 						);
 					}
 					echo $this->getIndicators();
-					echo Html::rawElement(
-						'h1',
-						array(
-							'class' => 'firstHeading',
-							'lang' => $this->get( 'pageLanguage' )
-						),
-						$this->get( 'title' )
-					);
-					echo Html::rawElement(
-						'div',
-						array( 'id' => 'siteSub' ),
-						$this->getMsg( 'tagline' )->parse()
-					);
+					// echo Html::rawElement(
+					// 	'h1',
+					// 	array(
+					// 		'class' => 'firstHeading',
+					// 		'lang' => $this->get( 'pageLanguage' )
+					// 	),
+					// 	$this->get( 'title' )
+					// );
+					// echo Html::rawElement(
+					// 	'div',
+					// 	array( 'id' => 'siteSub' ),
+					// 	$this->getMsg( 'tagline' )->parse()
+					// );
 					?>
 
 					<div class="mw-body-content">
@@ -90,10 +94,10 @@ class BootstrapTemplate extends BaseTemplate {
 						echo Html::closeElement( 'div' );
 
 						// $this->html( 'bodycontent' );
-						// echo Html::openElement( 'div' );
+
 						echo $new_body;
 
-						// $this->clear();
+						$this->clear();
 
 						echo Html::rawElement(
 							'div',
@@ -105,30 +109,15 @@ class BootstrapTemplate extends BaseTemplate {
 						?>
 					</div>
 					<pre>
-						<?php // print_r($this->data) ?>
+						<?php
+						?>
 					</pre>
 				</div>
 
 				<div class="col-3" id="mw-navigation">
-					<?php
-					echo Html::rawElement(
-						'h2',
-						[],
-						$this->getMsg( 'navigation-heading' )->parse()
-					);
-					// Site navigation/sidebar
-					echo Html::rawElement(
-						'div',
-						array( 'id' => 'site-navigation' ),
-						$this->getSiteNavigation()
-					);
-
-                    if ($extracted_toc) {
-                    	?>
-
-                    	<?php echo $extracted_toc;  ?>
-
-                         <?php } ?>
+					<?php if ($extracted_toc) {
+						echo $extracted_toc;
+					} ?>
 				</div>
 			</div>
 
@@ -369,33 +358,16 @@ class BootstrapTemplate extends BaseTemplate {
 		$html .= $this->makeSearchInput( array(
 			'id' => 'searchInput',
 			'class' => 'form-control mr-sm-2',
+			'placeholder' => 'Search',
 			) );
-		$html .= $this->makeSearchButton( 'go', array(
-			'id' => 'searchGoButton',
-			'class' => 'btn btn-outline-success my-2 my-sm-0'
-		) );
+		// $html .= $this->makeSearchButton( 'go', array(
+		// 	'id' => 'searchGoButton',
+		// 	'class' => 'btn btn-outline-success my-2 my-sm-0'
+		// ) );
 		$html .= Html::closeElement( 'form' );
 		return $html;
 	}
-	/**
-	 * Generates the sidebar
-	 * Set the elements to true to allow them to be part of the sidebar
-	 * @return string html
-	 */
-	private function getSiteNavigation() {
-		$html = '';
-		$sidebar = $this->getSidebar();
-		$sidebar['SEARCH'] = false;
-		$sidebar['TOOLBOX'] = true;
-		$sidebar['LANGUAGES'] = true;
-		foreach ( $sidebar as $boxName => $box ) {
-			if ( $boxName === false ) {
-				continue;
-			}
-			$html .= $this->getPortlet( $box, true );
-		}
-		return $html;
-	}
+
 	/**
 	 * Generates page-related tools/links
 	 * @return string html
@@ -437,9 +409,25 @@ class BootstrapTemplate extends BaseTemplate {
 		) );
 	}
 	/**
+	 * Generates site navigation menu
+	 * @return string html
+	 */
+	private function getSiteLinks() {
+		$sidebar = $this->getSidebar();
+		return $this->getNavDropDown( $sidebar['navigation'] );
+	}
+	/**
+	 * Generates site toolbox menu
+	 * @return string html
+	 */
+	private function getSiteToolbox() {
+		$sidebar = $this->getSidebar();
+		return $this->getNavDropDown( $sidebar['TOOLBOX'] );
+	}
+	/**
 	 * Outputs a css clear using the core visualClear class
 	 */
 	private function clear() {
-		echo '<div class="visualClear"></div>';
+		echo '<div class="clearfix"></div>';
 	}
 }
