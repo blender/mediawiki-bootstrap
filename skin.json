@@ -11,7 +11,8 @@
 	},
 	"AutoloadClasses": {
 		"SkinBootstrap": "Bootstrap.skin.php",
-		"BootstrapTemplate": "BootstrapTemplate.php"
+		"BootstrapTemplate": "BootstrapTemplate.php",
+		"DeToc": "DeToc.php"
 	},
 	"MessagesDirs": {
 		"Bootstrap": "i18n"
