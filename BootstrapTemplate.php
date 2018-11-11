@@ -9,12 +9,12 @@ class BootstrapTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() {
-		include_once 'DeToc.php';
 		$this->html( 'headelement' );
 			$body = $this->data['bodycontent'];
+			// Use DeToc class to extract the TOC from the body
 		  	$new_body = DeToc::ExtractToc($body, $extracted_toc);
 		?>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 			<?php echo $this->getLogo(); ?>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -30,18 +30,60 @@ class BootstrapTemplate extends BaseTemplate {
 					?>
 				</ul>
 				<div class="navbar-nav">
-					<?php echo $this->getSearch(); ?>
-					<?php if ( $this->data['loggedin'] ) { ?>
+
+
 					<li class="nav-item">
-						<?php echo $this->getUserLinks(); ?>
+						<?php
+						echo $this->getUserLinks();
+						?>
 					</li>
+					<?php if ( $this->data['loggedin'] ) { ?>
 					<?php }?>
 				</div>
 			</div>
 		</nav>
 		<div id="mw-wrapper" class="container-fluid">
 			<div class="row flex-xl-nowrap">
-				<div class="col-9" role="main">
+				<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+					<?php echo $this->getSearch(); ?>
+					<?php
+					foreach ( $this->getSidebar() as $boxName => $box ) { ?>
+					<div id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
+						<h5><?php echo htmlspecialchars( $box['header'] ); ?></h5>
+						 <!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
+
+					<?php
+						if ( is_array( $box['content'] ) ) { ?>
+						<ul>
+					<?php
+							foreach ( $box['content'] as $key => $item ) {
+								echo $this->makeListItem( $key, $item );
+							}
+					?>
+						</ul>
+					<?php
+						} else {
+							echo $box['content'];
+						}
+					?>
+					</div>
+					<?php } ?>
+				</div>
+				<div class="d-none d-xl-block col-xl-2 bd-toc">
+					<?php
+					if ($extracted_toc) {
+						echo $extracted_toc;
+					}
+					?>
+					<ul class="section-nav">
+						<li class="toc-entry toc-h2"><a href="#inline-code">Inline code</a></li>
+						<li class="toc-entry toc-h2"><a href="#code-blocks">Code blocks</a></li>
+						<li class="toc-entry toc-h2"><a href="#variables">Variables</a></li>
+						<li class="toc-entry toc-h2"><a href="#user-input">User input</a></li>
+						<li class="toc-entry toc-h2"><a href="#sample-output">Sample output</a></li>
+					</ul>
+				</div>
+				<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 					<?php
 					if ( $this->data['sitenotice'] ) {
 						echo Html::rawElement(
@@ -114,11 +156,13 @@ class BootstrapTemplate extends BaseTemplate {
 					</pre>
 				</div>
 
-				<div class="col-3" id="mw-navigation">
-					<?php if ($extracted_toc) {
-						echo $extracted_toc;
-					} ?>
-				</div>
+				<!-- <div class="col-3" id="mw-navigation"> -->
+					<?php
+					// if ($extracted_toc) {
+					// 	echo $extracted_toc;
+					// }
+					?>
+				<!-- </div> -->
 			</div>
 
 			<div id="mw-footer">
@@ -131,7 +175,7 @@ class BootstrapTemplate extends BaseTemplate {
 		</div>
 
 		<!-- Footer -->
-		<footer class="footer pt-4 mt-4">
+		<footer class="footer pt-4">
 
 			<!-- Footer Links -->
 			<div class="container-fluid text-md-left">
@@ -350,15 +394,16 @@ class BootstrapTemplate extends BaseTemplate {
 			array(
 				'action' => htmlspecialchars( $this->get( 'wgScript' ) ),
 				'role' => 'search',
-				'class' => 'form-inline my-2 my-lg-0',
+				'class' => 'bd-search d-flex align-items-center',
 				'id' => 'p-search'
 			)
 		);
 		$html .= Html::hidden( 'title', htmlspecialchars( $this->get( 'searchtitle' ) ) );
 		$html .= $this->makeSearchInput( array(
 			'id' => 'searchInput',
-			'class' => 'form-control mr-sm-2',
-			'placeholder' => 'Search',
+			'class' => 'form-control ds-input',
+			'placeholder' => 'Search...',
+			'autocomplete' => 'off',
 			) );
 		// $html .= $this->makeSearchButton( 'go', array(
 		// 	'id' => 'searchGoButton',

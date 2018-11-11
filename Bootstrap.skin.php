@@ -1,13 +1,13 @@
 <?php
 /**
- * Skin file for skin Foo Bar.
+ * Skin file for skin Bootstrap.
  *
  * @file
  * @ingroup Skins
  */
 
 /**
- * SkinTemplate class for Foo Bar skin
+ * SkinTemplate class for Bootstrap skin
  * @ingroup Skins
  */
 class SkinBootstrap extends SkinTemplate {
@@ -22,7 +22,7 @@ class SkinBootstrap extends SkinTemplate {
 	 *
 	 * @param OutputPage $out
 	 */
-	
+
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 		$out->addModules( 'skins.bootstrap.js' );
@@ -37,8 +37,10 @@ class SkinBootstrap extends SkinTemplate {
 	function setupSkinUserCss( OutputPage $out ) {
 		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles( array(
-			'mediawiki.skinning.interface', 'skins.bootstrap'
+			/* mediawiki.skinning.interface is the default interface theme*/
+			// 'mediawiki.skinning.interface',
 			/* 'skins.bootstrap' is the name you used in your skin.json file */
+			'skins.bootstrap'
 		) );
 	}
 }
