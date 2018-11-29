@@ -309,7 +309,6 @@ class BootstrapTemplate extends BaseTemplate {
 			'a',
 			array(
 				'class' => 'nav-link dropdown-toggle',
-				'id' => 'dd',
 				'role' => 'button',
 				'data-toggle' => 'dropdown' ),
 			isset( $box['headerMessage'] ) ? $this->getMsg( $box['headerMessage'] )->text() : $box['header'] );
