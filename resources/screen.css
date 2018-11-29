@@ -63,6 +63,7 @@ h1 {
     padding-right:.5rem;
     padding-left:.5rem;
     color:#fff;
+    cursor: pointer;
 }
 .bd-navbar .navbar-nav .nav-link.active,.bd-navbar .navbar-nav .nav-link:hover{
     color:#fff;
