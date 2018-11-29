@@ -95,25 +95,17 @@ h1 {
     font-size:1.25rem;
     font-weight:500
 }
-.bd-masthead .carbonad{
-    margin-top:0!important;
-    margin-bottom:-3rem!important
-}
+
 @media (min-width:576px){
     .bd-masthead{
         padding-top:5rem;
         padding-bottom:5rem
     }
-    .bd-masthead .carbonad{
-        margin-bottom:0!important
-    }
+
 }
 @media (min-width:768px){
     .bd-masthead h1{
         font-size:4rem
-    }
-    .bd-masthead .carbonad{
-        margin-top:3rem!important
     }
 }
 .half-rule{
@@ -127,36 +119,7 @@ h1 {
     padding:.5rem 0;
     background-color:transparent
 }
-#carbonads{
-    position:static;
-    display:block;
-    max-width:400px;
-    padding:15px 15px 15px 160px;
-    margin:2rem 0;
-    overflow:hidden;
-    font-size:13px;
-    line-height:1.4;
-    text-align:left;
-    background-color:rgba(0,0,0,.05)
-}
-#carbonads a{
-    color:#333;
-    text-decoration:none
-}
-@media (min-width:576px){
-    #carbonads{
-        max-width:330px;
-        border-radius:4px
-    }
-}
-.carbon-img{
-    float:left;
-    margin-left:-145px
-}
-.carbon-poweredby{
-    display:block;
-    color:#777!important
-}
+
 .bd-content{
     -ms-flex-order:1;
     order:1
@@ -293,7 +256,7 @@ h1 {
 .bd-sidebar{
     -ms-flex-order:0;
     order:0;
-    border-bottom:1px solid rgba(0,0,0,.1)
+    /*border-bottom:1px solid rgba(0,0,0,.1)*/
 }
 @media (min-width:768px){
     .bd-sidebar{
