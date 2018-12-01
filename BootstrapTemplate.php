@@ -14,7 +14,7 @@ class BootstrapTemplate extends BaseTemplate {
 			// Use DeToc class to extract the TOC from the body
 		  	$new_body = DeToc::ExtractToc($body, $extracted_toc);
 		?>
-		<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+		<nav class="navbar navbar-expand flex-column flex-md-row bd-navbar">
 			<?php echo $this->getLogo(); ?>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>

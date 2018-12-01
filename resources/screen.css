@@ -24,9 +24,10 @@ h1 {
 }
 
 .bd-navbar{
-    min-height:4rem;
+    /*min-height:4rem;*/
     background-color:#424246;
-    box-shadow:0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1)
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1);
+    padding: 0.2em 1em;
 }
 
 @media (max-width:991.98px){
