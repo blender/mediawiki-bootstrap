@@ -47,7 +47,15 @@ class BootstrapTemplate extends BaseTemplate {
 				<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
 					<?php echo $this->getSearch(); ?>
 					<?php
-					foreach ( $this->getSidebar() as $boxName => $box ) { ?>
+					foreach ( $this->getSidebar() as $boxName => $box ) {
+
+						// We ignore some navigation sections. They need to exist in the first place
+						// because they are accessed from $sidebar and they populate the navigation.
+						$ignored_navigation_sections = array('TOOLBOX', 'navigation');
+						if (in_array($boxName, $ignored_navigation_sections)) {
+							continue;
+						}
+					 ?>
 					<div id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
 						<h5><?php echo htmlspecialchars( $box['header'] ); ?></h5>
 						 <!-- If you do not want the words "Navigation" or "Tools" to appear, you can safely remove the line above. -->
@@ -75,13 +83,7 @@ class BootstrapTemplate extends BaseTemplate {
 						echo $extracted_toc;
 					}
 					?>
-					<ul class="section-nav">
-						<li class="toc-entry toc-h2"><a href="#inline-code">Inline code</a></li>
-						<li class="toc-entry toc-h2"><a href="#code-blocks">Code blocks</a></li>
-						<li class="toc-entry toc-h2"><a href="#variables">Variables</a></li>
-						<li class="toc-entry toc-h2"><a href="#user-input">User input</a></li>
-						<li class="toc-entry toc-h2"><a href="#sample-output">Sample output</a></li>
-					</ul>
+
 				</div>
 				<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 					<?php
@@ -245,7 +247,7 @@ class BootstrapTemplate extends BaseTemplate {
 				<!-- Grid row -->
 
 				<!-- Grid row -->
-				<div class="row">
+				<div class="row pt-4 pb-4">
 					<div class="col">
 						<!-- Copyright -->
 						<div class="text-center">Creative freedom starts with Blender – The Free and Open Source 3D Creation Suite blender.org:
