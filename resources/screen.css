@@ -24,7 +24,7 @@ h1 {
 }
 
 .bd-navbar{
-    /*min-height:4rem;*/
+    min-height:3rem;
     background-color:#424246;
     box-shadow:0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1);
     padding: 0.2em 1em;
@@ -233,8 +233,8 @@ h1 {
     .bd-toc{
         position:-webkit-sticky;
         position:sticky;
-        top:4rem;
-        height:calc(100vh - 4rem);
+        top:3rem;
+        height:calc(100vh - 3rem);
         overflow-y:auto
     }
 }
@@ -296,9 +296,9 @@ h1 {
         .bd-sidebar{
             position:-webkit-sticky;
             position:sticky;
-            top:4rem;
+            top:3rem;
             z-index:1000;
-            height:calc(100vh - 4rem)
+            height:calc(100vh - 3rem)
         }
     }
 }
