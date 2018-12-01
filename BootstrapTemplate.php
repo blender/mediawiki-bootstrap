@@ -100,19 +100,21 @@ class BootstrapTemplate extends BaseTemplate {
 						);
 					}
 					echo $this->getIndicators();
-					// echo Html::rawElement(
-					// 	'h1',
-					// 	array(
-					// 		'class' => 'firstHeading',
-					// 		'lang' => $this->get( 'pageLanguage' )
-					// 	),
-					// 	$this->get( 'title' )
-					// );
-					// echo Html::rawElement(
-					// 	'div',
-					// 	array( 'id' => 'siteSub' ),
-					// 	$this->getMsg( 'tagline' )->parse()
-					// );
+
+					// Automatic page title from URL
+					echo Html::rawElement(
+						'h1',
+						array(
+							'class' => 'firstHeading',
+							'lang' => $this->get( 'pageLanguage' )
+						),
+						$this->get( 'title' )
+					);
+					echo Html::rawElement(
+						'div',
+						array( 'id' => 'siteSub' ),
+						$this->getMsg( 'tagline' )->parse()
+					);
 					?>
 
 					<div class="mw-body-content">
