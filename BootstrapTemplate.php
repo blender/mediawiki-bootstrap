@@ -453,7 +453,7 @@ class BootstrapTemplate extends BaseTemplate {
 				'id' => 'page-links-dd',
 				'role' => 'button',
 				'data-toggle' => 'dropdown' ),
-			'More');
+			'Actions');
 		$html .= Html::openElement( 'div', array('class' => 'dropdown-menu dropdown-menu-right') );
 		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['namespaces'], true );
 		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['variants'], true );
