@@ -15,6 +15,10 @@ body {
   margin: 0;
 }
 
+a {
+    color: #0d79bd;
+}
+
 h1 {
   padding-top: 0;
   font-weight: normal;
