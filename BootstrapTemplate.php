@@ -23,20 +23,38 @@ class BootstrapTemplate extends BaseTemplate {
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<?php
-					echo $this->getPageLinks();
 
-					echo $this->getSiteLinks();
-					echo $this->getSiteToolbox();
+
+					// echo $this->getSiteLinks();
+
 					?>
 				</ul>
-				<div class="navbar-nav">
+				<div>
 
-
-					<li class="nav-item">
+					<ul class="navbar-nav">
 						<?php
-						echo $this->getUserLinks();
+						$content_navigation_views =  $this->data['content_navigation']['views'];
+
+						if ( is_array($content_navigation_views) ) {
+							foreach ( $content_navigation_views as $key => $item ) {
+
+								$item['class'] = 'nav-item';
+								$nav_ .= $this->makeListItem( $key, $item , array('tag' => 'li', 'link-class' => 'nav-link'));
+							}
+							echo $nav_;
+						}
+						echo $this->getPageLinks();
 						?>
-					</li>
+
+						<li class="nav-item">
+							<?php
+
+
+
+							echo $this->getUserLinks();
+							?>
+						</li>
+					</ul>
 					<?php if ( $this->data['loggedin'] ) { ?>
 					<?php }?>
 				</div>
@@ -77,15 +95,26 @@ class BootstrapTemplate extends BaseTemplate {
 					</div>
 					<?php } ?>
 				</div>
-				<div class="d-none d-xl-block col-xl-2 bd-toc">
-					<?php
-					if ($extracted_toc) {
-						echo $extracted_toc;
-					}
-					?>
 
+				<?php
+				// Only if $extracted_toc is available, create the column
+				if ( $extracted_toc ) { ?>
+				<div class="d-none d-xl-block col-xl-2 bd-toc">
+					<?php echo $extracted_toc; ?>
 				</div>
-				<div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+				<?php } ?>
+
+				<?php
+					// Define the width of bd_content (the main container) depending if the TOC is
+					// available or not. In particular set the col-xl size, since it's the only case
+					// where we display the TOC.
+					if ( $extracted_toc ) {
+						$bd_content_col_xl_width = 'col-xl-8';
+					} else {
+						$bd_content_col_xl_width = 'col-xl-10';
+					}
+				?>
+				<div class="col-12 col-md-9 <?php echo $bd_content_col_xl_width; ?> py-md-3 pl-md-5 bd-content" role="main">
 					<?php
 					if ( $this->data['sitenotice'] ) {
 						echo Html::rawElement(
@@ -112,11 +141,14 @@ class BootstrapTemplate extends BaseTemplate {
 						),
 						$this->get( 'title' )
 					);
-					echo Html::rawElement(
-						'div',
-						array( 'id' => 'siteSub' ),
-						$this->getMsg( 'tagline' )->parse()
-					);
+
+					// Do not display tagline
+
+					// echo Html::rawElement(
+					// 	'div',
+					// 	array( 'id' => 'siteSub' ),
+					// 	$this->getMsg( 'tagline' )->parse()
+					// );
 					?>
 
 					<div class="mw-body-content">
@@ -159,23 +191,7 @@ class BootstrapTemplate extends BaseTemplate {
 						?>
 					</pre>
 				</div>
-
-				<!-- <div class="col-3" id="mw-navigation"> -->
-					<?php
-					// if ($extracted_toc) {
-					// 	echo $extracted_toc;
-					// }
-					?>
-				<!-- </div> -->
 			</div>
-
-			<div id="mw-footer">
-				<?php
-
-				// $this->clear();
-				?>
-			</div>
-
 		</div>
 
 		<!-- Footer -->
@@ -191,7 +207,7 @@ class BootstrapTemplate extends BaseTemplate {
 					foreach ( $this->getFooterLinks() as $category => $links ) {
 
 						if ( $category == 'info' ) {
-							$divClasses = 'col-md-6 mt-md-0 mt-3';
+							$divClasses = 'col-md-3 mt-md-0 mt-3';
 							$linkElement = 'p';
 						} else {
 							$divClasses = 'col-md-3 mt-md-0 mt-3';
@@ -239,9 +255,22 @@ class BootstrapTemplate extends BaseTemplate {
 						echo Html::closeElement( 'div' );
 					}
 
+
+					// Third footer column
+					echo Html::openElement('div', array('class' => 'col-md-3 mt-md-0 mt-3',));
+					echo Html::element('h5', array('class' => 'text-uppercase'), 'Tools');
+					$sidebar = $this->getSidebar();
+					echo $this->getFooterMenu($sidebar['TOOLBOX']);
+					echo Html::closeElement( 'div' );
+
+					// Fourth footer column
+					echo Html::openElement('div', array('class' => 'col-md-3 mt-md-0 mt-3',));
+					echo Html::element('h5', array('class' => 'text-uppercase'), 'Navigation');
+					echo $this->getFooterMenu($sidebar['navigation']);
+					echo Html::closeElement( 'div' );
+
+
 					?>
-
-
 
 				</div>
 				<!-- Grid row -->
@@ -259,9 +288,6 @@ class BootstrapTemplate extends BaseTemplate {
 
 			</div>
 			<!-- Footer Links -->
-
-
-
 		</footer>
 		<!-- Footer -->
 
@@ -292,9 +318,8 @@ class BootstrapTemplate extends BaseTemplate {
 		}
 		return $html;
 	}
-
 	/**
-	 * Generates a single sidebar portlet of any kind
+	 * Generates a dropdown menu
 	 * @return string html
 	 */
 	private function getNavDropDown( $box ) {
@@ -317,7 +342,7 @@ class BootstrapTemplate extends BaseTemplate {
 				'data-toggle' => 'dropdown' ),
 			isset( $box['headerMessage'] ) ? $this->getMsg( $box['headerMessage'] )->text() : $box['header'] );
 		if ( is_array( $box['content'] ) ) {
-			$html .= Html::openElement( 'div', array('class' => 'dropdown-menu') );
+			$html .= Html::openElement( 'div', array('class' => 'dropdown-menu dropdown-menu-right') );
 			foreach ( $box['content'] as $key => $item ) {
 				$html .= $this->makeListItem( $key, $item , array('tag' => 'span', 'link-class' => 'dropdown-item'));
 				// $html .= $this->makeLink( $key, $item['links'][0], array('link-class' => 'dropdown-item') );
@@ -329,38 +354,31 @@ class BootstrapTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'li' );
 		return $html;
 	}
-	/**
-	 * Generates a single sidebar portlet of any kind
-	 * @return string html
-	 */
-	private function getPortlet( $box ) {
+
+
+	private function getFooterMenu( $box ) {
 		if ( !$box['content'] ) {
 			return;
 		}
 		$html = Html::openElement(
-			'div',
+			'ul',
 			array(
-				'role' => 'navigation',
-				'class' => 'mw-portlet',
 				'id' => Sanitizer::escapeId( $box['id'] )
 			) + Linker::tooltipAndAccesskeyAttribs( $box['id'] )
 		);
-		$html .= Html::element(
-			'h3',
-			[],
-			isset( $box['headerMessage'] ) ? $this->getMsg( $box['headerMessage'] )->text() : $box['header'] );
+
 		if ( is_array( $box['content'] ) ) {
-			$html .= Html::openElement( 'ul' );
 			foreach ( $box['content'] as $key => $item ) {
-				$html .= $this->makeListItem( $key, $item );
+				$html .= $this->makeListItem( $key, $item , array('tag' => 'li'));
+				// $html .= $this->makeLink( $key, $item['links'][0], array('link-class' => 'dropdown-item') );
 			}
-			$html .= Html::closeElement( 'ul' );
 		} else {
 			$html .= $box['content'];
 		}
-		$html .= Html::closeElement( 'div' );
+		$html .= Html::closeElement( 'ul' );
 		return $html;
 	}
+
 	/**
 	 * Generates the logo and (optionally) site title
 	 * @return string html
@@ -381,6 +399,7 @@ class BootstrapTemplate extends BaseTemplate {
 				array(
 					'src' => $this->data['logopath'],
 					'height' => '30',
+					'alt' => 'Portal logo'
 				)
 			);
 		}
@@ -415,7 +434,6 @@ class BootstrapTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'form' );
 		return $html;
 	}
-
 	/**
 	 * Generates page-related tools/links
 	 * @return string html
@@ -435,11 +453,11 @@ class BootstrapTemplate extends BaseTemplate {
 				'id' => 'page-links-dd',
 				'role' => 'button',
 				'data-toggle' => 'dropdown' ),
-			'Page Links');
-		$html .= Html::openElement( 'div', array('class' => 'dropdown-menu') );
-		$html .= $this->getNavDropDownContent( $this->data['content_navigation']['namespaces'], true );
-		$html .= $this->getNavDropDownContent( $this->data['content_navigation']['variants'], true );
-		$html .= $this->getNavDropDownContent( $this->data['content_navigation']['views'], true );
+			'More');
+		$html .= Html::openElement( 'div', array('class' => 'dropdown-menu dropdown-menu-right') );
+		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['namespaces'], true );
+		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['variants'], true );
+		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['views'], true );
 		$html .= $this->getNavDropDownContent( $this->data['content_navigation']['actions'] );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'li' );
