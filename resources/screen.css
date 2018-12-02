@@ -459,3 +459,18 @@ h4 {
     margin: 0;
     padding: 0;
 }
+
+
+/* Special Pages */
+
+#pagehistory {
+    font-size: 0.8em;
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+#mw-history-search,
+.mw-history-legend p {
+    font-size: 0.8em;
+}
