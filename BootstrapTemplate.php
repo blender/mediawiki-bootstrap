@@ -329,7 +329,6 @@ class BootstrapTemplate extends BaseTemplate {
 		$html = Html::openElement(
 			'li',
 			array(
-				'role' => 'navigation',
 				'class' => 'nav-item dropdown',
 				'id' => Sanitizer::escapeId( $box['id'] )
 			) + Linker::tooltipAndAccesskeyAttribs( $box['id'] )
