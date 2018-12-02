@@ -20,6 +20,21 @@ h1 {
   font-weight: normal;
 }
 
+h2 {
+    font-size: 1.6em;
+    margin-top: .7em;
+}
+
+h3 {
+    font-size: 1.45em;
+    margin-top: .7em;
+}
+
+h4 {
+    font-size: 1.35em;
+    margin-top: .7em;
+}
+
 .bd-navbar{
     min-height:3rem;
     background-color:#424246;
@@ -123,19 +138,33 @@ h1 {
     -ms-flex-order:1;
     order:1
 }
-.bd-content>h2[id],.bd-content>h3[id],.bd-content>h4[id]{
+.bd-content>h2[id],
+.bd-content>h3[id],
+.bd-content>h4[id]{
     pointer-events:none
 }
-.bd-content>h2[id]>a,.bd-content>h2[id]>div,.bd-content>h3[id]>a,.bd-content>h3[id]>div,.bd-content>h4[id]>a,.bd-content>h4[id]>div{
+.bd-content>h2[id]>a,
+.bd-content>h2[id]>div,
+.bd-content>h3[id]>a,
+.bd-content>h3[id]>div,
+.bd-content>h4[id]>a,
+.bd-content>h4[id]>div{
     pointer-events:auto
 }
-.bd-content>h2[id]::before,.bd-content>h3[id]::before,.bd-content>h4[id]::before{
+.bd-content>h2[id]::before,
+.bd-content>h3[id]::before,
+.bd-content>h4[id]::before{
     display:block;
     height:6rem;
     margin-top:-6rem;
     visibility:hidden;
     content:""
 }
+
+.bd-content .mw-parser-output {
+    font-size: 0.9em;
+}
+
 .bd-content>table{
     width:100%;
     max-width:100%;
@@ -172,7 +201,9 @@ h1 {
     margin-bottom:.25rem
 }
 @media (min-width:992px){
-    .bd-content>ol,.bd-content>p,.bd-content>ul{
+    .bd-content>ol,
+    .bd-content>p,
+    .bd-content>ul{
         max-width:80%
     }
 }
@@ -197,17 +228,10 @@ h1 {
         font-size:1.5rem
     }
 }
-.bd-text-purple{
-    color:#563d7c
-}
-.bd-text-purple-bright{
-    color:#7952b3
-}
 
 .bd-content .card-deck {
     margin-bottom: 10px;
 }
-
 
 .bd-toc {
     -ms-flex-order:2;
