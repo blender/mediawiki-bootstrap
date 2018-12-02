@@ -260,7 +260,7 @@ class BootstrapTemplate extends BaseTemplate {
 
 					// Third footer column
 					echo Html::openElement('div', array('class' => 'col-md-3 mt-md-0 mt-3',));
-					echo Html::element('h5', array('class' => 'text-uppercase'), 'Tools');
+					echo Html::element('h5', array('class' => 'text-uppercase'), 'Utilities');
 					$sidebar = $this->getSidebar();
 					echo $this->getFooterMenu($sidebar['TOOLBOX']);
 					echo Html::closeElement( 'div' );
