@@ -110,11 +110,13 @@ class BootstrapTemplate extends BaseTemplate {
 					// where we display the TOC.
 					if ( $extracted_toc ) {
 						$bd_content_col_xl_width = 'col-xl-8';
+						$padding = 'pl-md-5';
 					} else {
 						$bd_content_col_xl_width = 'col-xl-10';
+						$padding = 'px-md-5';
 					}
 				?>
-				<div class="col-12 col-md-9 <?php echo $bd_content_col_xl_width; ?> py-md-3 pl-md-5 bd-content" role="main">
+				<div class="col-12 col-md-9 <?php echo $bd_content_col_xl_width; ?> py-md-3 <?php echo $padding; ?> bd-content" role="main">
 					<?php
 					if ( $this->data['sitenotice'] ) {
 						echo Html::rawElement(
