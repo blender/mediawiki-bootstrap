@@ -36,8 +36,12 @@ h4 {
 }
 
 /* Enforce padding from top navbar when accessing anchors. */
-.mw-headline {
-    padding-top: 60px;
+/* Learn more http://nicolasgallagher.com/jump-links-and-viewport-positioning/demo/ */
+.mw-headline:before {
+    display: block;
+    content: "";
+    height: 60px;
+    margin: -60px 0 0;
 }
 
 .bd-navbar{
