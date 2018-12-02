@@ -439,6 +439,11 @@ class BootstrapTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	private function getPageLinks() {
+		$content_navigation_actions =  $this->data['content_navigation']['actions'];
+		if (empty($content_navigation_actions)) {
+			return;
+		}
+
 		$html = Html::openElement(
 			'li',
 			array(
@@ -455,10 +460,7 @@ class BootstrapTemplate extends BaseTemplate {
 				'data-toggle' => 'dropdown' ),
 			'Actions');
 		$html .= Html::openElement( 'div', array('class' => 'dropdown-menu dropdown-menu-right') );
-		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['namespaces'], true );
-		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['variants'], true );
-		// $html .= $this->getNavDropDownContent( $this->data['content_navigation']['views'], true );
-		$html .= $this->getNavDropDownContent( $this->data['content_navigation']['actions'] );
+		$html .= $this->getNavDropDownContent( $content_navigation_actions );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'li' );
 		return $html;
