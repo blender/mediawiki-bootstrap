@@ -312,6 +312,7 @@ h4 {
 .bd-sidebar{
     -ms-flex-order:0;
     order:0;
+    overflow: scroll;
     /*border-bottom:1px solid rgba(0,0,0,.1)*/
 }
 @media (min-width:768px){
