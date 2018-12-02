@@ -35,6 +35,11 @@ h4 {
     margin-top: .7em;
 }
 
+/* Enforce padding from top navbar when accessing anchors. */
+.mw-headline {
+    padding-top: 60px;
+}
+
 .bd-navbar{
     min-height:3rem;
     background-color:#424246;
@@ -270,14 +275,20 @@ h4 {
 
 .bd-toc ul li {
     list-style-type: none;
+    font-size: 1em
 }
 
-.bd-toc ul li.toclevel-1 .toctext {
+/*.bd-toc ul li.toclevel-1 .toctext {
     font-size: 1.2em;
-}
+}*/
 
 .bd-toc ul li.toclevel-2 .toctext {
-    font-size: 1em;
+    /*font-size: 1em;*/
+    padding-left: 1rem;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bd-toc ul li.toclevel-3,
