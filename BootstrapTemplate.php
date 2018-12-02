@@ -279,7 +279,7 @@ class BootstrapTemplate extends BaseTemplate {
 				<div class="row pt-4 pb-4">
 					<div class="col">
 						<!-- Copyright -->
-						<div class="text-center">Creative freedom starts with Blender – The Free and Open Source 3D Creation Suite blender.org:
+						<div class="text-center">Creative freedom starts with Blender – The Free and Open Source 3D Creation Suite
 						</div>
 						<!-- Copyright -->
 					</div>
