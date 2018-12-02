@@ -184,7 +184,7 @@ class BootstrapTemplate extends BaseTemplate {
 							array( 'class' => 'printfooter' ),
 							$this->get( 'printfooter' )
 						);
-						$this->html( 'catlinks' );
+						// $this->html( 'catlinks' );
 						$this->html( 'dataAfterContent' );
 						?>
 					</div>
