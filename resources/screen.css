@@ -474,3 +474,21 @@ h4 {
 .mw-history-legend p {
     font-size: 0.8em;
 }
+
+.mw-special-Preferences #preferences {
+    font-size: .85em;
+}
+
+#preftoc {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#preftoc li {
+    display: inline;
+    margin-right: 1em;
+}
+
+#preftoc li.selected {
+    text-decoration: underline;
+}
