@@ -246,6 +246,14 @@ h4 {
     margin-bottom: 10px;
 }
 
+.bd-content .center .thubminner {
+    margin: 0 auto 10px auto;
+}
+
+.thumbcation {
+    color: #6c757d;
+}
+
 .bd-toc {
     -ms-flex-order:2;
     order:2;
