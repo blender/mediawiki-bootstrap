@@ -242,10 +242,12 @@ h4 {
     }
 }
 
+/* Cards in the Main Page */
 .bd-content .card-deck {
     margin-bottom: 10px;
 }
 
+/* Image thumbnails */
 .bd-content .center .thumbinner {
     margin: 20px auto 10px auto;
 }
@@ -257,8 +259,15 @@ caption,
     padding-top: .25rem;
 }
 
+/* Add padding to pre element, used for <source> */
 pre {
     padding: 1.2em;
+}
+
+/* Hide the title of all pages in view mode. Preferences, History, etc,
+still display the title. */
+.ns-subject.action-view .firstHeading {
+    display: none;
 }
 
 .bd-toc {
