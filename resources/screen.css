@@ -254,6 +254,11 @@ caption,
 .thumbcaption {
     color: #6c757d;
     font-size: .85em;
+    padding-top: .25rem;
+}
+
+pre {
+    padding: 1.2em;
 }
 
 .bd-toc {
