@@ -247,11 +247,13 @@ h4 {
 }
 
 .bd-content .center .thumbinner {
-    margin: 0 auto 10px auto;
+    margin: 20px auto 10px auto;
 }
 
+caption,
 .thumbcaption {
     color: #6c757d;
+    font-size: .85em;
 }
 
 .bd-toc {
