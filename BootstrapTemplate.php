@@ -188,10 +188,6 @@ class BootstrapTemplate extends BaseTemplate {
 						$this->html( 'dataAfterContent' );
 						?>
 					</div>
-					<pre>
-						<?php
-						?>
-					</pre>
 				</div>
 			</div>
 		</div>
