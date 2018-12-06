@@ -2,7 +2,7 @@
 	"name": "Bootstrap",
 	"author": "Francesco Siddi",
 	"url": "https://www.mediawiki.org/wiki/Skin:Bootstrap",
-	"descriptionmsg": "foobar-desc",
+	"descriptionmsg": "Bootstrap 4 based documentation-oriented skin.",
 	"namemsg": "bootstrap",
 	"license-name": "GPL-2.0+",
 	"type": "skin",
