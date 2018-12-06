@@ -488,3 +488,12 @@ still display the title. */
 #preftoc li.selected {
     text-decoration: underline;
 }
+
+
+/* Per-page customizations */
+
+/* Process/Module_Owners/List */
+.page-Process_Module_Owners_List th:nth-child(2),
+.page-Process_Module_Owners_List th:nth-child(3) {
+    width: 40%;
+}
