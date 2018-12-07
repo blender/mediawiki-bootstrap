@@ -180,6 +180,7 @@ h4 {
     .bd-content ol,
     .bd-content p,
     .bd-content ul, 
+    .center,
     center {
         max-width: 80%
     }
@@ -189,6 +190,7 @@ h4 {
     .bd-content ol,
     .bd-content p,
     .bd-content ul, 
+    .center,
     center {
         max-width: 60%
     }
@@ -230,6 +232,13 @@ Text under title, with description of page.
 /* Cards in the Main Page */
 .bd-content .card-deck {
     margin-bottom: 10px;
+}
+
+
+@media (min-width:1800px){
+    .bd-content .card-deck {
+        max-width: 60%;
+    }
 }
 
 /* Image thumbnails */
