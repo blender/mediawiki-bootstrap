@@ -185,13 +185,20 @@ h4 {
         font-size:3rem
     }
 }
+
+/* Used for short text under a page title, describing the content of a page.
+Needs to be applied to a div element as follows:
+
+<div class="bd-lead">
+Text under title, with description of page.
+</div>
+*/
 .bd-lead{
     font-size:1.125rem;
     font-weight:300
 }
 @media (min-width:576px){
     .bd-lead{
-        max-width:80%;
         margin-bottom:1rem;
         font-size:1.5rem
     }
