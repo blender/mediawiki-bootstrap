@@ -124,6 +124,7 @@ h4 {
     max-width: 100%;
     margin-bottom: 1rem
 }
+
 @media (max-width: 991.98px){
     .bd-content table{
         display: block;
@@ -154,6 +155,17 @@ h4 {
 }
 .bd-content table td:first-child>code{
     white-space:nowrap
+}
+
+/* Override for transparent table (used to place image elements) */
+
+.bd-content table.transparent>tbody>tr>td,
+.bd-content table.transparent>tbody>tr>th,
+.bd-content table.transparent>tfoot>tr>td,
+.bd-content table.transparent>tfoot>tr>th,
+.bd-content table.transparent>thead>tr>td,
+.bd-content table.transparent>thead>tr>th{
+    border: transparent;
 }
 
 .bd-content h3{
