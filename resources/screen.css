@@ -115,11 +115,11 @@ h4 {
 }
 
 
-.bd-content .mw-parser-output {
+/*.bd-content .mw-parser-output {
     font-size: 0.9em;
-}
+}*/
 
-.bd-content table{
+.bd-content table.wikitable{
     width: 100%;
     max-width: 100%;
     margin-bottom: 1rem
@@ -166,6 +166,7 @@ h4 {
 .bd-content table.transparent>thead>tr>td,
 .bd-content table.transparent>thead>tr>th{
     border: transparent;
+    padding: .1em;
 }
 
 .bd-content h3{
@@ -178,8 +179,18 @@ h4 {
 @media (min-width:992px){
     .bd-content ol,
     .bd-content p,
-    .bd-content ul{
-        max-width:80%
+    .bd-content ul, 
+    center {
+        max-width: 80%
+    }
+}
+
+@media (min-width:1800px){
+    .bd-content ol,
+    .bd-content p,
+    .bd-content ul, 
+    center {
+        max-width: 60%
     }
 }
 
