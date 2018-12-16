@@ -200,6 +200,11 @@ h4 {
     padding-bottom: 1em;
 }
 
+.bd-content .mw-redirectedfrom {
+    margin-left: 1em,
+    font-size: 0.8em;
+}
+
 .bd-title{
     margin-top:1rem;
     margin-bottom:.5rem;
