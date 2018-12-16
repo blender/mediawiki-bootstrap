@@ -179,7 +179,7 @@ h4 {
 @media (min-width:992px){
     .bd-content ol,
     .bd-content p,
-    .bd-content ul, 
+    .bd-content ul,
     .center,
     center {
         max-width: 80%
@@ -189,7 +189,7 @@ h4 {
 @media (min-width:1800px){
     .bd-content ol,
     .bd-content p,
-    .bd-content ul, 
+    .bd-content ul,
     .center,
     center {
         max-width: 60%
@@ -201,7 +201,7 @@ h4 {
 }
 
 .bd-content .mw-redirectedfrom {
-    margin-left: 1em,
+    margin-left: 1em;
     font-size: 0.8em;
 }
 
