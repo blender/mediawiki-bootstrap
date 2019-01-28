@@ -186,15 +186,9 @@ h4 {
     }
 }
 
-@media (min-width:1800px){
-    .bd-content ol,
-    .bd-content p,
-    .bd-content ul,
-    .center,
-    center {
-        max-width: 60%
-    }
-}
+/* Note: there used to be a min-width:1080px media query set to 60%.
+It has been removed to always be 80% after 992px.
+*/
 
 .mw-content-ltr ul {
     padding-bottom: 1em;
