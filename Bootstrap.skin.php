@@ -25,6 +25,7 @@ class SkinBootstrap extends SkinTemplate {
 
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
+		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
 		$out->addModules( 'skins.bootstrap.js' );
 		/* 'skins.bootstrap.js' is the name you used in your skin.json file */
 	}
