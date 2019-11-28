@@ -36,6 +36,7 @@ class BootstrapTemplate extends BaseTemplate {
 						$content_navigation_views =  $this->data['content_navigation']['views'];
 
 						if ( is_array($content_navigation_views) ) {
+							$nav_ = null;
 							foreach ( $content_navigation_views as $key => $item ) {
 
 								$item['class'] = 'nav-item';
