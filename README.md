@@ -4,11 +4,9 @@ This theme was originally developed for [wiki.blender.org](https://wiki.blender.
 
 ## Development setup
 
-* Get MediaWiki up and running (for example using [Docker](https://hub.docker.com/_/mediawiki))
-* Mount the following files/dirs
-	* `<your_host_path>/LocalSettings.php:/var/www/html/LocalSettings.php` 
-	* `<your_host_path>/Bootstrap:/var/www/html/skins/Bootstrap`
-* Checkout the repo in `<your_host_path>/Bootstrap`
+* Get MediaWiki up and running with `docker-compose up`
+* Visit http://localhost:8080/ and configure mediawiki using sqlite as database
+* Download `LocalSettings.php` and place it next to `stack.yml`
 * Add `wfLoadSkin( 'Bootstrap' );` to `LocalSettigs.php`
 
 ## Get involved!

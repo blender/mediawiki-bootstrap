@@ -4,7 +4,25 @@
  *
  * @ingroup Skins
  */
+
+require_once '_navbar_developer.php';
+
 class BootstrapTemplate extends BaseTemplate {
+
+	public function renderDeveloperNavbarLinks() {
+		$content_navigation_views =  $this->data['content_navigation']['views'];
+		if ( is_array($content_navigation_views) ) {
+			$nav_ = null;
+			foreach ( $content_navigation_views as $key => $item ) {
+				$item['class'] = 'nav-item';
+				$nav_ .= $this->makeListItem( $key, $item , array('tag' => 'li', 'link-class' => 'nav-link'));
+			}
+			echo $nav_;
+		}
+		echo $this->getPageLinks();
+		echo '<li>';
+		echo $this->getUserLinks();
+	}
 	/**
 	 * Outputs the entire contents of the page
 	 */
@@ -12,55 +30,12 @@ class BootstrapTemplate extends BaseTemplate {
 		$this->html( 'headelement' );
 			$body = $this->data['bodycontent'];
 			// Use DeToc class to extract the TOC from the body
-		  	$new_body = DeToc::ExtractToc($body, $extracted_toc);
+			$new_body = DeToc::ExtractToc($body, $extracted_toc);
 		?>
-		<nav class="navbar navbar-expand flex-column flex-md-row bd-navbar">
-			<?php echo $this->getLogo(); ?>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<?php
+		<?php
+		renderDeveloperNavbarContent(array($this, 'renderDeveloperNavbarLinks')); ?>
 
 
-					// echo $this->getSiteLinks();
-
-					?>
-				</ul>
-				<div>
-
-					<ul class="navbar-nav">
-						<?php
-						$content_navigation_views =  $this->data['content_navigation']['views'];
-
-						if ( is_array($content_navigation_views) ) {
-							$nav_ = null;
-							foreach ( $content_navigation_views as $key => $item ) {
-
-								$item['class'] = 'nav-item';
-								$nav_ .= $this->makeListItem( $key, $item , array('tag' => 'li', 'link-class' => 'nav-link'));
-							}
-							echo $nav_;
-						}
-						echo $this->getPageLinks();
-						?>
-
-						<li class="nav-item">
-							<?php
-
-
-
-							echo $this->getUserLinks();
-							?>
-						</li>
-					</ul>
-					<?php if ( $this->data['loggedin'] ) { ?>
-					<?php }?>
-				</div>
-			</div>
-		</nav>
 		<div id="mw-wrapper" class="container-fluid">
 			<div class="row flex-xl-nowrap">
 				<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
@@ -306,7 +281,7 @@ class BootstrapTemplate extends BaseTemplate {
 		if ( !is_array( $links ) || empty( $links ) ) {
 			return;
 		}
-
+		$html = '';
 		foreach ( $links as $key => $item ) {
 			$html .= $this->makeListItem( $key, $item , array('tag' => 'span', 'link-class' => 'dropdown-item'));
 			// $html .= $this->makeLink( $key, $item['links'][0], array('link-class' => 'dropdown-item') );

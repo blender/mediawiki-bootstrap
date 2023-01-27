@@ -1,0 +1,27 @@
+# MediaWiki
+#
+# Access via "http://localhost:8080"
+version: '3'
+services:
+  mediawiki:
+    image: mediawiki:1.35
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./images:/var/www/html/images
+      - ./data:/var/www/data
+      - ./Bootstrap:/var/www/html/skins/Bootstrap
+      # After initial setup, download LocalSettings.php to the same directory as
+      # this yaml and uncomment the following line and use compose to restart
+      # the mediawiki service
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
+  wiki:
+    image: ghcr.io/requarks/wiki:2
+
+    environment:
+      DB_TYPE: sqlite
+    restart: unless-stopped
+    ports:
+      - "80:3000"
+
