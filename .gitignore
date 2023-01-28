@@ -1,4 +1,4 @@
 *.swp
-Bootstrap/resources/images/**
-data/
-LocalSettings.php
+resources/images/**
+dev/data/
+dev/LocalSettings.php
