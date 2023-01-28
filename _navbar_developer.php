@@ -106,6 +106,7 @@ echo '
     margin: 0;
     padding: 0 var(--navbardev-spacer);
     position: relative;
+    z-index: 1000;
   }
 
   /* Links. */
