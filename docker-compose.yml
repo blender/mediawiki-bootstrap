@@ -16,12 +16,3 @@ services:
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service
       - ./LocalSettings.php:/var/www/html/LocalSettings.php
-  wiki:
-    image: ghcr.io/requarks/wiki:2
-
-    environment:
-      DB_TYPE: sqlite
-    restart: unless-stopped
-    ports:
-      - "80:3000"
-
