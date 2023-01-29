@@ -5,11 +5,11 @@
  * @ingroup Skins
  */
 
-require_once '_navbar_developer.php';
 
 class BootstrapTemplate extends BaseTemplate {
 
-	public function renderDeveloperNavbarLinks() {
+	public function renderWikiNavbarLinks() {
+		echo '<ul class="navbar-nav">';
 		$content_navigation_views =  $this->data['content_navigation']['views'];
 		if ( is_array($content_navigation_views) ) {
 			$nav_ = null;
@@ -20,20 +20,38 @@ class BootstrapTemplate extends BaseTemplate {
 			echo $nav_;
 		}
 		echo $this->getPageLinks();
-		echo '<li>';
+		echo '<li class="nav-item">';
 		echo $this->getUserLinks();
+		echo '</li>';
+		echo '</ul>';
 	}
 	/**
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() {
 		$this->html( 'headelement' );
-			$body = $this->data['bodycontent'];
-			// Use DeToc class to extract the TOC from the body
-			$new_body = DeToc::ExtractToc($body, $extracted_toc);
-		?>
-		<?php
-		renderDeveloperNavbarContent(array($this, 'renderDeveloperNavbarLinks')); ?>
+		$body = $this->data['bodycontent'];
+		// Use DeToc class to extract the TOC from the body
+		$new_body = DeToc::ExtractToc($body, $extracted_toc);
+		include('_navbar_developer.php');
+?>
+		<nav class="navbar navbar-expand flex-column flex-md-row bd-navbar">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="/">Developer Documentation</a></li>
+				</ul>
+				<div>
+<?php
+					$this->renderWikiNavbarLinks();
+?>
+				</div>
+			</div>
+		</nav>
+
 
 
 		<div id="mw-wrapper" class="container-fluid">

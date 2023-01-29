@@ -1,7 +1,3 @@
-<?php
-
-function renderDeveloperNavbarContent($func) {
-echo '
 <style>
 /* Custom styling for MediaWiki. */
 .navbardev-container a.navbardev-logo svg {
@@ -106,7 +102,7 @@ echo '
     margin: 0;
     padding: 0 var(--navbardev-spacer);
     position: relative;
-    z-index: 1000;
+    z-index: 1800;
   }
 
   /* Links. */
@@ -461,9 +457,8 @@ echo '
     </li>
   </ul>
 
-  <ul class="navbardev-links-right">';
-  $func();
-  echo '
+  <ul class="navbardev-links-right">
+
     <li>
       <div class="navbardev-apps-dropdown-container">
         <button class="js-navbardev-dropdown-toggle" data-dropdown-id="navbardev-apps-menu">
@@ -664,11 +659,10 @@ echo '
   });
 
   /* Hide all dropdowns when pressing Esc. */
+  /* Hide all dropdowns when pressing Esc. */
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       dropdownHideAll();
     }
   });
-</script>';
-};
-?>
+</script>
