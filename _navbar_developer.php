@@ -1,4 +1,14 @@
 <style>
+   @font-face {
+      font-family: "Heebo";
+      src: url("https://www.blender.org/wp-content/themes/bthree/assets_shared/font/Heebo/Heebo-VariableFont_wght.ttf") format("truetype-variations");
+      font-weight: normal;
+      font-variation-settings: "wght" var(--font-weight);
+      font-style: normal
+    }
+</style>
+
+<style>
   /* This style block is copied across all sites using the developer navbar.
    * For custom styling on this website, add a <style> block after this one. */
 
@@ -337,7 +347,7 @@
 
   .navbardev .navbardev-apps-menu ul>li>a svg {
     position: relative;
-    top: 1px;
+    top: 2px;
   }
 
   /* Donate section of the menu. */
