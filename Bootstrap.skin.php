@@ -28,6 +28,7 @@ class SkinBootstrap extends SkinTemplate {
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
 		$out->addModules( 'skins.bootstrap.js' );
 		/* 'skins.bootstrap.js' is the name you used in your skin.json file */
+		$out->addHeadItem( 'analytics', '<script defer data-domain="wiki.blender.org" src="https://analytics.blender.org/js/script.js"></script>');
 	}
 
 	/**
