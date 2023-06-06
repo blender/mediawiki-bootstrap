@@ -1,7 +1,7 @@
 {
 	"name": "Bootstrap",
 	"author": "Francesco Siddi",
-	"url": "https://www.mediawiki.org/wiki/Skin:Bootstrap",
+	"url": "https://github.com/blender/mediawiki-bootstrap",
 	"descriptionmsg": "Bootstrap 4 based documentation-oriented skin.",
 	"namemsg": "bootstrap",
 	"license-name": "GPL-2.0+",
